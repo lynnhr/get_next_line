@@ -6,107 +6,84 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/08 15:03:24 by lhaydar           #+#    #+#             */
-/*   Updated: 2026/01/20 00:55:02 by marvin           ###   ########.fr       */
+/*   Updated: 2026/01/20 01:22:19 by marvin           ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
 #include "get_next_line.h"
 
-char	*ft_strchr(const char *s, int c)
-{
-	unsigned char	val;
-
-	if (!s)
-		return (NULL);
-	val = (unsigned char)c;
-	while (*s != val)
-	{
-		if (!*s)
-		{
-			return (0);
-		}
-		s++;
-	}
-	return ((char *)s);
-}
-
-size_t	ft_strlen(const char *s)
-{
-	size_t	i;
-
-	if (!s)
-		return (0);
-	i = 0;
-	while (s[i])
-	{
-		i++;
-	}
-	return (i);
-}
-
 char	*ft_strjoin(char const *s1, char const *s2)
 {
+	int		sizetotal;
+	char	*res;
 	int		i;
-	size_t	len;
-	char	*p;
+	int		j;
 
-	if (!s1 || !s2)
-		return (NULL);
-	len = ft_strlen(s1) + ft_strlen(s2) + 1;
-	p = malloc(sizeof(char) * len);
-	if (!p)
-		return (NULL);
 	i = 0;
-	while (*s1)
-		p[i++] = *s1++;
-	while (*s2)
-		p[i++] = *s2++;
-	p[i] = '\0';
-	return (p);
-}
-
-char	*ft_substr(char const *s, unsigned int start, size_t len)
-{
-	size_t	i;
-	char	*p;
-
-	if (!s)
+	sizetotal = ft_strlen(s1) + ft_strlen(s2);
+	res = malloc(sizeof(char) * (sizetotal + 1));
+	if (!res || !s1 || !s2)
 		return (NULL);
-	if (start >= ft_strlen(s))
-		return (ft_strdup(""));
-	if (len > ft_strlen(s + start))
-		len = ft_strlen(s + start);
-	p = malloc(sizeof(char) * (len + 1));
-	if (!p)
-		return (NULL);
-	i = 0;
-	while (i < len)
+	while (s1[i] != 0)
 	{
-		p[i] = s[start + i];
+		res[i] = s1[i];
 		i++;
 	}
-	p[i] = '\0';
-	return (p);
+	j = 0;
+	while (s2[j] != 0)
+	{
+		res[i] = s2[j];
+		i++;
+		j++;
+	}
+	res[sizetotal] = 0;
+	return (res);
 }
 
-char	*ft_strdup(const char *s)
+char	*ft_strchr(const char *string, int searchedChar )
 {
-	char	*p;
-	size_t	i;
-	size_t	size;
+	char	*str;
 
-	if (!s)
-		return (0);
-	size = ft_strlen(s);
-	p = malloc(sizeof(char) * (size + 1));
-	if (!p)
-		return (0);
+	str = (char *)string;
+	while (*str != searchedChar && *str != 0)
+		str++;
+	if (*str == searchedChar)
+		return (str);
+	else
+		return (NULL);
+}
+
+void	ft_bzero(void *s, size_t n)
+{
+	char	*str;
+	size_t	i;
+
+	str = (char *)s;
 	i = 0;
-	while (i < size)
+	while (i < n)
 	{
-		p[i] = s[i];
+		str[i] = '\0';
 		i++;
 	}
-	p[i] = '\0';
-	return (p);
+}
+
+void	*ft_calloc(size_t elementCount, size_t elementSize)
+{
+	char	*res;
+
+	res = malloc(elementSize * elementCount);
+	if (!res)
+		return (NULL);
+	ft_bzero(res, elementSize * elementCount);
+	return (res);
+}
+
+size_t	ft_strlen(const char *theString)
+{
+	int	i;
+
+	i = 0;
+	while (theString[i])
+		i++;
+	return (i);
 }

@@ -6,27 +6,24 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/08 15:03:31 by lhaydar           #+#    #+#             */
-/*   Updated: 2026/01/20 00:53:30 by marvin           ###   ########.fr       */
+/*   Updated: 2026/01/20 01:22:37 by marvin           ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
-
-# ifndef SIZE
-#  define SIZE
-# endif
-
-# include <limits.h>
 # include <stdlib.h>
-# include <string.h>
+# include <sys/types.h>
+# include <sys/uio.h>
 # include <unistd.h>
 
 char	*get_next_line(int fd);
-size_t	ft_strlen(const char *s);
-char	*ft_strchr(const char *s, int c);
 char	*ft_strjoin(char const *s1, char const *s2);
-char	*ft_strdup(const char *s);
-char	*ft_substr(char const *s, unsigned int start, size_t len);
+char	*ft_strchr(const char *string, int searchedChar );
+
+void	ft_bzero(void *s, size_t n);
+void	*ft_calloc(size_t elementCount, size_t elementSize);
+
+size_t	ft_strlen(const char *theString);
 
 #endif
