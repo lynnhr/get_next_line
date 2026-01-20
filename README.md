@@ -10,4 +10,4 @@ This project has been created as part of the 42 curriculum by lhaydar
 - [Youtube](https://www.youtube.com/watch?v=kR4FyNzVDBE)
 - Linux Manual Page
 - [GeeksforGeeks](https://www.geeksforgeeks.org/c/input-output-system-calls-c-create-open-close-read-write/)
-- [BUFSIZ](https://c-for-dummies.com/blog/?p=4711)
+
