@@ -10,7 +10,7 @@ int	main(void)
 	int		fd;
 	char	*line;
 
-	fd = open("file.txt", O_RDONLY);
+	fd = open("other tests/alone.txt", O_RDONLY);
 	if (fd == -1)
 	{
 		perror("open");
