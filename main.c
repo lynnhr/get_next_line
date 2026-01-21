@@ -16,7 +16,6 @@ int	main(void)
 		perror("open");
 		return (1);
 	}
-
 	while (1)
 	{
 		line = get_next_line(fd);
@@ -25,7 +24,6 @@ int	main(void)
 		printf("%s", line);
 		free(line);
 	}
-
 	close(fd);
 	return (0);
 }
